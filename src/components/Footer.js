@@ -51,13 +51,13 @@ function Footer() {
               Resume
             </a>
             <a
-              href="mailto:y0z04on@gmail.com"
+              href="mailto:zengyitian@gmail.com"
               className="footer__link"
             >
               Email
             </a>
             <a
-              href="https://www.linkedin.com/in/"
+              href="https://www.linkedin.com/in/chloez7/"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__link"
