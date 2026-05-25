@@ -30,7 +30,7 @@ function Footer() {
       >
         <div className="footer__closing">
           <h2 className="footer__closing-text">
-            From ideas to execution — I design products that move from concept
+            From ideas to execution, I design products that move from concept
             into something people can actually experience.
           </h2>
         </div>

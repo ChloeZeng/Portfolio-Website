@@ -27,11 +27,12 @@ function CodeProjectSection() {
 
   return (
     <>
-      {/* Transition beat */}
-      <section className="transition-beat">
+      {/* Post-hero buffer — full-viewport pause between video story and projects.
+          Gives the user a breath before project content appears. */}
+      <section className="post-hero-buffer">
         <p
           ref={transitionRef}
-          className={`transition-beat__text ${transitionVisible ? "reveal" : ""}`}
+          className={`post-hero-buffer__text ${transitionVisible ? "reveal" : ""}`}
         >
           Not just designing screens — but making ideas feel real.
         </p>
@@ -39,6 +40,7 @@ function CodeProjectSection() {
 
       {/* Main projects section */}
       <section className="projects-section">
+        {/* Chapter intro header — tall enough to read before cards appear */}
         <div className="projects-section__header">
           <div
             ref={headingRef}
