@@ -22,22 +22,10 @@ function useReveal(threshold = 0.2) {
 }
 
 function CodeProjectSection() {
-  const [transitionRef, transitionVisible] = useReveal(0.4);
   const [headingRef, headingVisible] = useReveal(0.3);
 
   return (
     <>
-      {/* Post-hero buffer — full-viewport pause between video story and projects.
-          Gives the user a breath before project content appears. */}
-      <section className="post-hero-buffer">
-        <p
-          ref={transitionRef}
-          className={`post-hero-buffer__text ${transitionVisible ? "reveal" : ""}`}
-        >
-          Not just designing screens — but making ideas feel real.
-        </p>
-      </section>
-
       {/* Main projects section */}
       <section className="projects-section">
         {/* Chapter intro header — tall enough to read before cards appear */}

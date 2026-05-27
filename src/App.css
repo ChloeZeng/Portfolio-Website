@@ -57,22 +57,11 @@ a {
 }
 
 /* =============================================
-   HERO
+   SECTION 1 — INTRO HERO (intro-loop.mp4)
+   Simple full-screen opening, no scroll scrubbing.
    ============================================= */
-/*
-  .hero is the tall scroll container (400vh).
-  This is the full scroll distance for all three video phases.
-  .hero__sticky is the viewport-pinned visual panel inside it.
-*/
 .hero {
   position: relative;
-  width: 100%;
-  height: 650vh;
-}
-
-.hero__sticky {
-  position: sticky;
-  top: 0;
   width: 100%;
   height: 100svh;
   min-height: 600px;
@@ -81,24 +70,27 @@ a {
   align-items: flex-end;
 }
 
-.hero__video {
+/* Shared video base styles reused across all three video sections */
+.hero__video,
+.main-video-story__video,
+.ending-transition__video {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  top: 0;
+  left: 50%;
+  width: 135%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  transform: translateX(20%) scale(1.45);
-  transform-origin: center center;
+  transform: translateX(-38%);
   transition: opacity 0.45s ease;
   will-change: opacity, transform;
 }
 
-/* On mobile the centered/top framing already looks good — restore it. */
 @media (max-width: 768px) {
-  .hero__video {
+  .hero__video,
+  .main-video-story__video,
+  .ending-transition__video {
     object-position: center top;
-    transform: none;
   }
 }
 
@@ -131,13 +123,12 @@ a {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-mid);
   margin-bottom: var(--space-md);
 }
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 6vw, 5.5rem);
+  font-size: clamp(2rem, 5vw, 4.6rem);
   font-weight: 400;
   line-height: 1.08;
   letter-spacing: -0.02em;
@@ -186,37 +177,116 @@ a {
 }
 
 /* =============================================
-   POST-HERO BUFFER
-   Full-viewport pause between the video story and the project section.
-   Slows scroll pacing so the user never lands mid-project-list.
+   SECTION 2 — MAIN VIDEO STORY (main.mp4)
+   360vh tall; video sticky-pinned; currentTime driven by scroll.
    ============================================= */
-.post-hero-buffer {
-  min-height: 140vh;
+.main-video-story {
+  position: relative;
+  width: 100%;
+  height: 360vh;
+}
+
+.main-video-story__sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-xl) var(--space-md);
-  background: var(--color-black);
+  align-items: flex-end;
+}
+
+.main-video-story__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.1) 0%,
+    rgba(10, 10, 10, 0.45) 50%,
+    rgba(10, 10, 10, 0.88) 100%
+  );
+}
+
+.main-video-story__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
+  max-width: 760px;
 }
 
 @media (min-width: 768px) {
-  .post-hero-buffer {
-    padding: var(--space-xl) var(--space-lg);
+  .main-video-story__content {
+    padding: var(--space-lg) var(--space-lg) var(--space-xl);
   }
 }
 
-.post-hero-buffer__text {
+.main-video-story__headline {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 5vw, 4.5rem);
+  font-size: clamp(1.8rem, 4.5vw, 4rem);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+}
+
+.main-video-story__support {
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.65;
+  color: rgba(245, 244, 240, 0.6);
+  max-width: 480px;
+}
+
+/* =============================================
+   SECTION 3 — ENDING TRANSITION (ending-loop.mp4)
+   ~120vh visual beat; video autoplays, loops.
+   ============================================= */
+.ending-transition {
+  position: relative;
+  width: 100%;
+  height: 120vh;
+  min-height: 500px;
+  overflow: hidden;
+  /* Text anchored bottom-left, consistent with hero and main story layout */
+  display: flex;
+  align-items: flex-end;
+}
+
+.ending-transition__overlay {
+  position: absolute;
+  inset: 0;
+  /* Heavier gradient at the bottom so left-aligned text stays readable */
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.1) 0%,
+    rgba(10, 10, 10, 0.45) 55%,
+    rgba(10, 10, 10, 0.88) 100%
+  );
+}
+
+.ending-transition__content {
+  position: relative;
+  z-index: 2;
+  /* Left-aligned, bottom — mirrors hero and main story text placement */
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
+  max-width: 640px;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .ending-transition__content {
+    padding: var(--space-lg) var(--space-lg) var(--space-xl);
+  }
+}
+
+.ending-transition__text {
+  font-family: var(--font-display);
+  /* Slightly smaller than the hero title — this is a transition, not another hero */
+  font-size: clamp(1.3rem, 2.8vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
   color: var(--color-off-white);
-  max-width: 900px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out);
 }
 
 /* =============================================
@@ -234,13 +304,13 @@ a {
 }
 
 .projects-section__header {
-  /* Tall enough that the chapter title fills the screen before cards appear */
-  min-height: 110vh;
+  /* Tall chapter intro — user clearly sees this title before cards arrive */
+  min-height: 120vh;
   display: flex;
   align-items: center;
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-lg);
-  margin-bottom: var(--space-xl);
+  margin-bottom: 0;
 }
 
 .projects-section__heading-wrap {
@@ -284,7 +354,16 @@ a {
 .projects-section__grid {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  /* Wide gaps give each card its own scroll moment on desktop */
+  gap: 14rem;
+  padding-top: var(--space-xl);
+}
+
+@media (max-width: 768px) {
+  .projects-section__grid {
+    gap: 6rem;
+    padding-top: var(--space-md);
+  }
 }
 
 /* =============================================
@@ -297,6 +376,15 @@ a {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-md);
+  /* Each card occupies most of a screen height — one card per scroll moment */
+  min-height: 85vh;
+  align-content: center;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    min-height: auto;
+  }
 }
 
 .project-card--visible {
@@ -307,7 +395,7 @@ a {
 @media (min-width: 1024px) {
   .project-card {
     grid-template-columns: 3fr 1.2fr;
-    align-items: start;
+    align-items: center;
     gap: var(--space-lg);
   }
 }
