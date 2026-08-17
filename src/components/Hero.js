@@ -45,7 +45,7 @@ function Hero() {
       <div className="hero__overlay" />
 
       <div className="hero__content">
-        <p className="hero__eyebrow">Portfolio — Product Design</p>
+        <p className="hero__eyebrow">Portfolio</p>
         <h1 className="hero__title" ref={titleRef}>
           I turn ambiguity into products people can actually use.
         </h1>

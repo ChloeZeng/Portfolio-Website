@@ -38,24 +38,19 @@ function Footer() {
         <div className="footer__bio-contact">
           <p className="footer__bio">
             Product designer with experience across social platforms, AI systems,
-            emerging technologies, and front-end prototypes.
+            and front-end prototypes.
           </p>
 
           <nav className="footer__links">
             <a
-              href="/resume.pdf"
+              href="/resume/ChloeZeng-26.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__link"
             >
               Resume
             </a>
-            <a
-              href="mailto:zengyitian@gmail.com"
-              className="footer__link"
-            >
-              Email
-            </a>
+
             <a
               href="https://www.linkedin.com/in/chloez7/"
               target="_blank"
